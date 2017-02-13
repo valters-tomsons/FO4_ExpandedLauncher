@@ -1,0 +1,46 @@
+﻿<Window x:Class="FO4_ExpandedLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FO4_ExpandedLauncher"
+        mc:Ignorable="d"
+        
+        Title="Expanded Launcher | Fallout 4" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" ResizeMode="NoResize" 
+        Height="400" Width="835" Icon="LosCBcQ.ico">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="MenuItem">
+            <!--http://www.fontfabric.com/bebas-neue/-->
+            <Setter Property="FontFamily" Value="pack://application:,,,\Resources\#Bebas Neue Regular"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Focusable" Value="True"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="TextBlock.Foreground" Value="YellowGreen" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Self}}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Image x:Name="Background" Stretch="Fill" Source="Backgrounds/redrocket.png"/>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="25,0">
+            <TextBlock Style="{StaticResource MenuItem}" FocusVisualStyle="{x:Null}" x:Name="PlayButton" Text="PLAY"/>
+            <TextBlock Style="{StaticResource MenuItem}" FocusVisualStyle="{x:Null}" x:Name="OptionsButton" Text="OPTIONS"/>
+            <TextBlock Style="{StaticResource MenuItem}" FocusVisualStyle="{x:Null}" x:Name="ExitButton" Text="EXIT"/>
+        </StackPanel>
+
+        <Frame x:Name="PageFrame" Visibility="Collapsed" Source="Options.xaml" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+    
+</Window>
